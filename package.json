@@ -1,0 +1,16 @@
+{
+    "name": "neutrino-api-client-native",
+    "version": "4.6.8",
+    "description": "Node client using the native HTTP client",
+    "main": "main.js",
+    "scripts": {
+        "bad-word-filter": "node src/examples/bad-word-filter.js",
+        "image-watermark": "node src/examples/image-watermark.js",
+        "ip-info": "node src/examples/ip-info.js"
+    },
+    "author": "Neutrino API",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {},
+    "private": true
+}
