@@ -31,7 +31,7 @@ neutrinoAPIClient.geocodeReverse(params)
         const data = apiResponse.data;
         console.log("API Response OK:");
         
-        // The fully formatted address
+        // The complete address using comma-separated values
         console.log('address:', `'${data['address']}'`);
         
         // The components which make up the address such as road, city, state, etc
@@ -78,8 +78,14 @@ neutrinoAPIClient.geocodeReverse(params)
         // The location longitude
         console.log('longitude:', data['longitude']);
         
+        // The formatted address using local standards suitable for printing on an envelope
+        console.log('postal-address:', `'${data['postal-address']}'`);
+        
         // The postal code for the location
         console.log('postal-code:', `'${data['postal-code']}'`);
+        
+        // The ISO 3166-2 region code for the location
+        console.log('region-code:', `'${data['region-code']}'`);
         
         // The state of the location
         console.log('state:', `'${data['state']}'`);

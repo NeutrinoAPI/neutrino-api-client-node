@@ -55,7 +55,7 @@ neutrinoAPIClient.geocodeAddress(params)
         const locations = data['locations'];
         console.log('locations:');
         for (const locationsItem of locations) {
-            // The fully formatted address
+            // The complete address using comma-separated values
             console.log('    address:', `'${locationsItem['address']}'`);
             // The components which make up the address such as road, city, state, etc
             console.log('    address-components:', locationsItem['address-components']);
@@ -88,8 +88,12 @@ neutrinoAPIClient.geocodeAddress(params)
             console.log('    location-type:', `'${locationsItem['location-type']}'`);
             // The location longitude
             console.log('    longitude:', locationsItem['longitude']);
+            // The formatted address using local standards suitable for printing on an envelope
+            console.log('    postal-address:', `'${locationsItem['postal-address']}'`);
             // The postal code for the location
             console.log('    postal-code:', `'${locationsItem['postal-code']}'`);
+            // The ISO 3166-2 region code for the location
+            console.log('    region-code:', `'${locationsItem['region-code']}'`);
             // The state of the location
             console.log('    state:', `'${locationsItem['state']}'`);
             // Map containing timezone details for the location
