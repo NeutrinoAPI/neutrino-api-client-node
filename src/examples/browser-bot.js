@@ -14,7 +14,7 @@ const params = {
 
     // Extract content from the page DOM using this selector. Commonly known as a CSS selector, you can
     // find a good reference here
-    'selector': '.header-link',
+    'selector': '.button',
 
     // The URL to load
     'url': 'https://www.neutrinoapi.com/',
@@ -31,7 +31,7 @@ const params = {
     // matching the given selector. keys('characters'); Send the specified keyboard characters. Use
     // click() or focus() first to send keys to a specific element. enter(); Send the Enter key. tab();
     // Send the Tab key.
-    'exec': '[]',
+    'exec': '[click(\'#button-id\'), sleep(1), click(\'.class\'), keys(\'1234\'), enter()]',
 
     // Override the browsers default user-agent string with this one
     'user-agent': ''

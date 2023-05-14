@@ -1,6 +1,6 @@
 {
     "name": "neutrino-api-client-native",
-    "version": "4.6.10",
+    "version": "4.6.11",
     "description": "Node client using the native HTTP client",
     "main": "neutrino-api-client.js",
     "author": "Neutrino API",

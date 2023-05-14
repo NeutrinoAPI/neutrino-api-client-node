@@ -68,7 +68,7 @@ neutrinoAPIClient.ipInfo(params)
         // ISO 3166-2 region code (if detectable)
         console.log('region-code:', `'${data['region-code']}'`);
         
-        // Map containing timezone details for the location
+        // Map containing timezone details
         console.log('timezone:', data['timezone']);
         
         // True if this is a valid IPv4 or IPv6 address
