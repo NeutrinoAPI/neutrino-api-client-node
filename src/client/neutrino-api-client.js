@@ -5,6 +5,7 @@ const APIResponse = require('./api-response');
 const fs = require('fs');
 const https = require('https');
 const { promisify } = require('util');
+const { URL, URLSearchParams } = require('url');
 
 /**
  * Make a request to the Neutrino API
@@ -549,6 +550,10 @@ class NeutrinoAPIClient
                 url = new URL(`${this.baseURL}/${endpoint}`);
             }
             const options = {
+                'protocol': url.protocol,
+                'hostname': url.hostname,
+                'port': url.port,
+                'path': url.pathname + url.search,
                 'headers': {
                     'User-id': this.userID,
                     'API-Key': this.apiKey,
@@ -558,7 +563,7 @@ class NeutrinoAPIClient
                 'method': httpMethod
             };
             try {
-                const request = https.request(url, options, (response) => {
+                const request = https.request(options, (response) => {
                     const statusCode = response.statusCode || 0;
                     const contentType = response.headers['content-type'] || '';
                     let data = '';
