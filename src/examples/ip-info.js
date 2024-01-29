@@ -44,7 +44,7 @@ neutrinoAPIClient.ipInfo(params)
         // The IPs full hostname (only set if reverse-lookup has been used)
         console.log('hostname:', `'${data['hostname']}'`);
         
-        // The IP address
+        // An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation.
         console.log('ip:', `'${data['ip']}'`);
         
         // True if this is a bogon IP address such as a private network, local network or reserved address

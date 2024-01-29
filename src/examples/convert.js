@@ -22,6 +22,12 @@ neutrinoAPIClient.convert(params)
         const data = apiResponse.data;
         console.log("API Response OK:");
         
+        // The full name of the type being converted from
+        console.log('from-name:', `'${data['from-name']}'`);
+        
+        // The standard UTF-8 symbol used to represent the type being converted from
+        console.log('from-symbol:', `'${data['from-symbol']}'`);
+        
         // The type of the value being converted from
         console.log('from-type:', `'${data['from-type']}'`);
         
@@ -33,6 +39,12 @@ neutrinoAPIClient.convert(params)
         
         // The result of the conversion as a floating-point number
         console.log('result-float:', data['result-float']);
+        
+        // The full name of the type being converted to
+        console.log('to-name:', `'${data['to-name']}'`);
+        
+        // The standard UTF-8 symbol used to represent the type being converted to
+        console.log('to-symbol:', `'${data['to-symbol']}'`);
         
         // The type being converted to
         console.log('to-type:', `'${data['to-type']}'`);
