@@ -6,7 +6,7 @@ const neutrinoAPIClient = new NeutrinoAPIClient('<your-user-id>', '<your-api-key
 
 const params = {
 
-    // IPv4 or IPv6 address
+    // An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation
     'ip': '1.1.1.1',
 
     // Do a reverse DNS (PTR) lookup. This option can add extra delay to the request so only use it if
@@ -44,7 +44,7 @@ neutrinoAPIClient.ipInfo(params)
         // The IPs full hostname (only set if reverse-lookup has been used)
         console.log('hostname:', `'${data['hostname']}'`);
         
-        // An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation.
+        // The IPv4 or IPv6 address returned
         console.log('ip:', `'${data['ip']}'`);
         
         // True if this is a bogon IP address such as a private network, local network or reserved address
@@ -68,7 +68,7 @@ neutrinoAPIClient.ipInfo(params)
         // ISO 3166-2 region code (if detectable)
         console.log('region-code:', `'${data['region-code']}'`);
         
-        // Map containing timezone details
+        // Structure of a valid ip-info -> timezone response
         console.log('timezone:', data['timezone']);
         
         // True if this is a valid IPv4 or IPv6 address

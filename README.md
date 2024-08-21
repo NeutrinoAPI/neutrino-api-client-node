@@ -1,6 +1,6 @@
 # NeutrinoAPI Node Native SDK
 
-Node client using the native HTTP client
+Neutrino API Node.js client using the native HTTP library
 
 The official API client and SDK built by [NeutrinoAPI](https://www.neutrinoapi.com/)
 
@@ -11,7 +11,7 @@ The official API client and SDK built by [NeutrinoAPI](https://www.neutrinoapi.c
 | JSON Library     | Native |
 | HTTP/2           | No     |
 | HTTP/3           | No     |
-| CodeGen Version  | 4.6.13 |
+| CodeGen Version  | 4.6.15 |
 
 ## Getting started
 
@@ -19,9 +19,7 @@ First you will need a user ID and API key pair: [SignUp](https://www.neutrinoapi
 
 ## To Initialize
 ```js
-const NeutrinoAPIClient = require('../client/neutrino-api-client');
-
-const neutrinoAPIClient = new NeutrinoAPIClient('<your-user-id>', '<your-api-key');
+const neutrinoAPI = new NeutrinoAPIClient('<your-user-id>', '<your-api-key');
 ```
 
 ## Running Examples
@@ -30,6 +28,17 @@ const neutrinoAPIClient = new NeutrinoAPIClient('<your-user-id>', '<your-api-key
 $ node src/examples/bad-word-filter.js
 ```
 You can find examples of all APIs in _src/examples/_
+
+Set the __'your-user-id'__ and __'your-api-key'__ values in the example to retrieve real API responses
+
+## Install using NPM
+```sh
+$ npm install neutrino-api-client-node
+```
+Then include the package in your project:
+```js
+const NeutrinoAPIClient = require("neutrino-api-client-node");
+```
 
 ## For Support
 [Contact us](https://www.neutrinoapi.com/contact-us/)

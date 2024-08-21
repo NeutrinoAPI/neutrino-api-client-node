@@ -46,9 +46,22 @@ neutrinoAPIClient.browserBot(params)
         // The complete raw, decompressed and decoded page content. Usually will be either HTML, JSON or XML
         console.log('content:', `'${data['content']}'`);
         
-        // Array containing all the elements matching the supplied selector. Each element object will
-        // contain the text content, HTML content and all current element attributes
-        console.log('elements:', data['elements']);
+        // Array containing all the elements matching the supplied selector
+        const elements = data['elements'];
+        console.log('elements:');
+        for (const elementsItem of elements) {
+            // The 'class' attribute of the element
+            console.log('    class:', `'${elementsItem['class']}'`);
+            // The 'href' attribute of the element
+            console.log('    href:', `'${elementsItem['href']}'`);
+            // The raw HTML of the element
+            console.log('    html:', `'${elementsItem['html']}'`);
+            // The 'id' attribute of the element
+            console.log('    id:', `'${elementsItem['id']}'`);
+            // The plain-text content of the element with normalized whitespace
+            console.log('    text:', `'${elementsItem['text']}'`);
+            console.log()
+        }
         
         // Contains the error message if an error has occurred ('is-error' will be true)
         console.log('error-message:', `'${data['error-message']}'`);

@@ -52,7 +52,7 @@ neutrinoAPIClient.urlInfo(params)
         console.log('http-status:', data['http-status']);
         
         // The HTTP status message assoicated with the status code
-        console.log('http-status-message:', data['http-status-message']);
+        console.log('http-status-message:', `'${data['http-status-message']}'`);
         
         // True if an error occurred while loading the URL. This includes network errors, TLS errors and
         // timeouts

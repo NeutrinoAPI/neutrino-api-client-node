@@ -6,7 +6,7 @@ const neutrinoAPIClient = new NeutrinoAPIClient('<your-user-id>', '<your-api-key
 
 const params = {
 
-    // IPv4 or IPv6 address
+    // An IPv4 or IPv6 address. Accepts standard IP notation and also CIDR notation
     'ip': '194.233.98.38'
 };
 
@@ -61,7 +61,7 @@ neutrinoAPIClient.ipProbe(params)
         // The IPs full hostname (PTR)
         console.log('hostname:', `'${data['hostname']}'`);
         
-        // The IP address
+        // The IPv4 or IPv6 address returned
         console.log('ip:', `'${data['ip']}'`);
         
         // True if this is a bogon IP address such as a private network, local network or reserved address
@@ -75,7 +75,7 @@ neutrinoAPIClient.ipProbe(params)
         // the provider type is VPN/proxy, this occurs in the case that the IP is detected as both types
         console.log('is-isp:', data['is-isp']);
         
-        // True if this IP ia a proxy
+        // True if this IP is a proxy
         console.log('is-proxy:', data['is-proxy']);
         
         // True if this is a IPv4 mapped IPv6 address

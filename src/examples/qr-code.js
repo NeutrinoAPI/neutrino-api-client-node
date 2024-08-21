@@ -9,6 +9,9 @@ const outputFilePath = path.join(os.tmpdir(), `qr-code-${Date.now()}-${Math.rand
 
 const params = {
 
+    // The barcode format to output. Accepted formats are: qr, c128
+    'code-format': 'qr',
+
     // The width of the QR code (in px)
     'width': '256',
 
