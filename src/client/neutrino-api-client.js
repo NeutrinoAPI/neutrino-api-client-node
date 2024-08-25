@@ -12,14 +12,14 @@ const { promisify } = require('util');
 class NeutrinoAPIClient 
 {
     constructor(userID, apiKey, baseURL) {
-        this.Multicloud = 'https://neutrinoapi.net/';
-        this.AWS = 'https://aws.neutrinoapi.net/';
-        this.GCP = 'https://gcp.neutrinoapi.net/';
-        this.Backup = 'https://neutrinoapi.com/';
+        this.MULTICLOUD_ENDPOINT = 'https://neutrinoapi.net/';
+        this.AWS_ENDPOINT = 'https://aws.neutrinoapi.net/';
+        this.GCP_ENDPOINT = 'https://gcp.neutrinoapi.net/';
+        this.BACKUP_ENDPOINT = 'https://neutrinoapi.com/';
         this.CONNECT_TIMEOUT_MS = 10000;
         this.userID = userID;
         this.apiKey = apiKey;
-        this.baseURL = baseURL || this.Multicloud;
+        this.baseURL = baseURL || this.MULTICLOUD_ENDPOINT;
     }
 
     /**

@@ -46,6 +46,9 @@ neutrinoAPIClient.browserBot(params)
         // The complete raw, decompressed and decoded page content. Usually will be either HTML, JSON or XML
         console.log('content:', `'${data['content']}'`);
         
+        // The size of the returned content in bytes
+        console.log('content-size:', data['content-size']);
+        
         // Array containing all the elements matching the supplied selector
         const elements = data['elements'];
         console.log('elements:');
@@ -67,7 +70,15 @@ neutrinoAPIClient.browserBot(params)
         console.log('error-message:', `'${data['error-message']}'`);
         
         // If you executed any JavaScript this array holds the results as objects
-        console.log('exec-results:', data['exec-results']);
+        const execResults = data['exec-results'];
+        console.log('exec-results:');
+        for (const execResultsItem of execResults) {
+            // The result of the executed JavaScript statement. Will be empty if the statement returned nothing
+            console.log('    result:', `'${execResultsItem['result']}'`);
+            // The JavaScript statement that was executed
+            console.log('    statement:', `'${execResultsItem['statement']}'`);
+            console.log()
+        }
         
         // The redirected URL if the URL responded with an HTTP redirect
         console.log('http-redirect-url:', `'${data['http-redirect-url']}'`);
@@ -110,14 +121,24 @@ neutrinoAPIClient.browserBot(params)
         // Map containing details of the TLS/SSL setup
         console.log('security-details:', data['security-details']);
         
+        // The HTTP servers hostname (PTR/RDNS record)
+        console.log('server-hostname:', `'${data['server-hostname']}'`);
+        
         // The HTTP servers IP address
         console.log('server-ip:', `'${data['server-ip']}'`);
         
         // The document title
         console.log('title:', `'${data['title']}'`);
         
-        // The page URL
+        // The requested URL. This may not be the same as the final destination URL, if the URL redirects
+        // then it will be set in 'http-redirect-url' and 'is-http-redirect' will also be true
         console.log('url:', `'${data['url']}'`);
+        
+        // Structure of a browser-bot -> url-components response
+        console.log('url-components:', data['url-components']);
+        
+        // True if the URL supplied is valid
+        console.log('url-valid:', data['url-valid']);
     })
     .catch((apiResponse) => {
         // API request failed, you should handle this gracefully!

@@ -90,7 +90,7 @@ neutrinoAPIClient.geocodeReverse(params)
         // The state of the location
         console.log('state:', `'${data['state']}'`);
         
-        // Structure of a valid ip-info -> timezone response
+        // Structure of a ip-info -> timezone response
         console.log('timezone:', data['timezone']);
     })
     .catch((apiResponse) => {

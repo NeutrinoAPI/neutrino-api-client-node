@@ -96,7 +96,7 @@ neutrinoAPIClient.geocodeAddress(params)
             console.log('    region-code:', `'${locationsItem['region-code']}'`);
             // The state of the location
             console.log('    state:', `'${locationsItem['state']}'`);
-            // Structure of a valid ip-info -> timezone response
+            // Structure of a ip-info -> timezone response
             console.log('    timezone:', locationsItem['timezone']);
             console.log()
         }
