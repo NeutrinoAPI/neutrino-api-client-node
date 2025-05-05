@@ -134,7 +134,7 @@ neutrinoAPIClient.browserBot(params)
         // then it will be set in 'http-redirect-url' and 'is-http-redirect' will also be true
         console.log('url:', `'${data['url']}'`);
         
-        // Structure of a browser-bot -> url-components response
+        // Structure of url-components
         console.log('url-components:', data['url-components']);
         
         // True if the URL supplied is valid

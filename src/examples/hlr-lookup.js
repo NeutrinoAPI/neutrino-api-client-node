@@ -87,6 +87,10 @@ neutrinoAPIClient.hlrLookup(params)
         // The mobile MSIN number (Mobile Subscription Identification Number)
         console.log('msin:', `'${data['msin']}'`);
         
+        // Contains any additional details about the current network such as former network names and mobile
+        // technology utilized
+        console.log('network-tags:', `'${data['network-tags']}'`);
+        
         // The number type, possible values are:
         // • mobile
         // • fixed-line

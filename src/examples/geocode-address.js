@@ -69,6 +69,8 @@ neutrinoAPIClient.geocodeAddress(params)
             console.log('    country-code3:', `'${locationsItem['country-code3']}'`);
             // ISO 4217 currency code associated with the country
             console.log('    currency-code:', `'${locationsItem['currency-code']}'`);
+            // The ISO 2-letter language code for the official language spoken in the country
+            console.log('    language-code:', `'${locationsItem['language-code']}'`);
             // The location latitude
             console.log('    latitude:', locationsItem['latitude']);
             // Array of strings containing any location tags associated with the address. Tags are additional
@@ -96,7 +98,7 @@ neutrinoAPIClient.geocodeAddress(params)
             console.log('    region-code:', `'${locationsItem['region-code']}'`);
             // The state of the location
             console.log('    state:', `'${locationsItem['state']}'`);
-            // Structure of a ip-info -> timezone response
+            // Structure of timezone
             console.log('    timezone:', locationsItem['timezone']);
             console.log()
         }

@@ -55,6 +55,9 @@ neutrinoAPIClient.geocodeReverse(params)
         // True if these coordinates map to a real location
         console.log('found:', data['found']);
         
+        // The ISO 2-letter language code for the official language spoken in the country
+        console.log('language-code:', `'${data['language-code']}'`);
+        
         // The location latitude
         console.log('latitude:', data['latitude']);
         
@@ -90,7 +93,7 @@ neutrinoAPIClient.geocodeReverse(params)
         // The state of the location
         console.log('state:', `'${data['state']}'`);
         
-        // Structure of a ip-info -> timezone response
+        // Structure of timezone
         console.log('timezone:', data['timezone']);
     })
     .catch((apiResponse) => {

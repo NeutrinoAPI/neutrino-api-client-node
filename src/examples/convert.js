@@ -13,7 +13,13 @@ const params = {
     'from-type': 'USD',
 
     // The type to convert to (e.g. EUR)
-    'to-type': 'EUR'
+    'to-type': 'EUR',
+
+    // Convert using the rate on a historical date, accepted date formats are: YYYY-MM-DD, YYYY-MM,
+    // YYYY. Historical rates are stored with daily granularity so the date format YYYY-MM-DD is
+    // preferred for the highest precision. If an invalid date or a date too far into the past is
+    // supplied then the API will respond with 'valid' as false and an empty 'historical-date'
+    'historical-date': ''
 };
 
 neutrinoAPIClient.convert(params)
@@ -33,6 +39,10 @@ neutrinoAPIClient.convert(params)
         
         // The value being converted from
         console.log('from-value:', `'${data['from-value']}'`);
+        
+        // If a historical conversion was made using the 'historical-date' request option this will contain
+        // the exact date used for the conversion in ISO format: YYYY-MM-DD
+        console.log('historical-date:', `'${data['historical-date']}'`);
         
         // The result of the conversion in string format
         console.log('result:', `'${data['result']}'`);

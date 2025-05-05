@@ -16,6 +16,9 @@ class NeutrinoAPIClient
         this.AWS_ENDPOINT = 'https://aws.neutrinoapi.net/';
         this.GCP_ENDPOINT = 'https://gcp.neutrinoapi.net/';
         this.BACKUP_ENDPOINT = 'https://neutrinoapi.com/';
+        this.EU_GEOFENCE_ENDPOINT = 'https://eu.neutrinoapi.net/';
+        this.AU_GEOFENCE_ENDPOINT = 'https://aus.neutrinoapi.net/';
+        this.US_GEOFENCE_ENDPOINT = 'https://usa.neutrinoapi.net/';
         this.CONNECT_TIMEOUT_MS = 10000;
         this.userID = userID;
         this.apiKey = apiKey;
@@ -98,6 +101,7 @@ class NeutrinoAPIClient
      * - from-value - The value to convert from (e.g. 10.95)
      * - from-type - The type of the value to convert from (e.g. USD)
      * - to-type - The type to convert to (e.g. EUR)
+     * - historical-date - Convert using the rate on a historical date
      *
      * @link https://www.neutrinoapi.com/api/convert
      * @param {{[key: string]: string}} params The API parameters
@@ -119,7 +123,7 @@ class NeutrinoAPIClient
      * @return Promise<APIResponse>
      */
     domainLookup(params) {
-        return this.execRequest("GET", "domain-lookup", params, null, 120);
+        return this.execRequest("GET", "domain-lookup", params, null, 300);
     }
 
     /**
@@ -149,7 +153,7 @@ class NeutrinoAPIClient
      * @return Promise<APIResponse>
      */
     emailVerify(params) {
-        return this.execRequest("GET", "email-verify", params, null, 120);
+        return this.execRequest("GET", "email-verify", params, null, 300);
     }
 
     /**
@@ -220,7 +224,7 @@ class NeutrinoAPIClient
      * @return Promise<APIResponse>
      */
     hostReputation(params) {
-        return this.execRequest("GET", "host-reputation", params, null, 120);
+        return this.execRequest("GET", "host-reputation", params, null, 300);
     }
 
     /**
@@ -295,7 +299,7 @@ class NeutrinoAPIClient
      * @return Promise<APIResponse>
      */
     imageResize(params, outputFilePath) {
-        return this.execRequest("POST", "image-resize", params, outputFilePath, 20);
+        return this.execRequest("POST", "image-resize", params, outputFilePath, 30);
     }
 
     /**
@@ -318,7 +322,7 @@ class NeutrinoAPIClient
      * @return Promise<APIResponse>
      */
     imageWatermark(params, outputFilePath) {
-        return this.execRequest("POST", "image-watermark", params, outputFilePath, 20);
+        return this.execRequest("POST", "image-watermark", params, outputFilePath, 30);
     }
 
     /**
@@ -382,7 +386,7 @@ class NeutrinoAPIClient
      * @return Promise<APIResponse>
      */
     ipProbe(params) {
-        return this.execRequest("GET", "ip-probe", params, null, 120);
+        return this.execRequest("GET", "ip-probe", params, null, 300);
     }
 
     /**
@@ -456,7 +460,7 @@ class NeutrinoAPIClient
      * @return Promise<APIResponse>
      */
     qrCode(params, outputFilePath) {
-        return this.execRequest("POST", "qr-code", params, outputFilePath, 20);
+        return this.execRequest("POST", "qr-code", params, outputFilePath, 30);
     }
 
     /**

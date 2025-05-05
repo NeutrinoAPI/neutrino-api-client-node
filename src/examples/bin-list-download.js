@@ -5,7 +5,7 @@ const os = require('os');
 const path = require('path');
 
 const neutrinoAPIClient = new NeutrinoAPIClient('<your-user-id>', '<your-api-key>');
-const outputFilePath = path.join(os.tmpdir(), `bin-list-download-${Date.now()}-${Math.random()}.png`);
+const outputFilePath = path.join(os.tmpdir(), `bin-list-download-${Date.now()}-${Math.random()}.csv`);
 
 const params = {
 

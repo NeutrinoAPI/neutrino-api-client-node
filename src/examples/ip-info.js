@@ -56,6 +56,9 @@ neutrinoAPIClient.ipInfo(params)
         // True if this is a IPv6 address. False if IPv4
         console.log('is-v6:', data['is-v6']);
         
+        // The ISO 2-letter language code for the official language spoken in the country
+        console.log('language-code:', `'${data['language-code']}'`);
+        
         // Location latitude
         console.log('latitude:', data['latitude']);
         
@@ -68,7 +71,7 @@ neutrinoAPIClient.ipInfo(params)
         // ISO 3166-2 region code (if detectable)
         console.log('region-code:', `'${data['region-code']}'`);
         
-        // Structure of a ip-info -> timezone response
+        // Structure of timezone
         console.log('timezone:', data['timezone']);
         
         // True if this is a valid IPv4 or IPv6 address
