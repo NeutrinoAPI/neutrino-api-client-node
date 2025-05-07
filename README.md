@@ -6,7 +6,7 @@ The official API client and SDK built by [NeutrinoAPI](https://www.neutrinoapi.c
 
 | Feature          |        |
 |------------------|--------|
-| Platform Version | >= 10  |
+| Platform Version | >= 6  |
 | HTTP Library     | Native |
 | JSON Library     | Native |
 | HTTP/2           | No     |
