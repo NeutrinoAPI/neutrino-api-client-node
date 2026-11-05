@@ -13,7 +13,7 @@ const params = {
     'longitude': '174.7775229',
 
     // The language to display results in, available languages are:
-    // • de, en, es, fr, it, pt, ru
+    // • ar, de, en, es, fr, it, ja, nl, pt, ru, zh
     'language-code': 'en',
 
     // The zoom level to respond with:
@@ -22,7 +22,10 @@ const params = {
     // • city - the city level
     // • state - the state level
     // • country - the country level
-    'zoom': 'address'
+    'zoom': 'address',
+
+    // Reverse lookup by a geohash instead of using latitude and longitude
+    'geohash': ''
 };
 
 neutrinoAPIClient.geocodeReverse(params)
@@ -31,14 +34,40 @@ neutrinoAPIClient.geocodeReverse(params)
         const data = apiResponse.data;
         console.log("API Response OK:");
         
-        // The complete address using comma-separated values
+        // The full address string using comma-separated values, use 'postal-address' for the address string
+        // formatted using country/region specific rules
         console.log('address:', `'${data['address']}'`);
         
-        // The components which make up the address such as road, city, state, etc
+        // The components which make up the address such as road, city, state, etc. These are country/region
+        // specific values, use 'address-structured' for a strict address structure which is the same for
+        // all locations globally
         console.log('address-components:', data['address-components']);
+        
+        // Structure of address-structured
+        console.log('address-structured:', data['address-structured']);
+        
+        // The detected building type for the address, possible values are:
+        // • none - no building type was detected for this location
+        // • house - a residential house/property
+        // • apartment - a residential apartment complex
+        // • office - a commercial/business office
+        // • accommodation - a hotel/motel or other type of accommodation
+        // • education - a school or university
+        // • food - a restaurant or place where food can be purchased
+        // • shop - a shop selling any type of goods
+        // • attraction - an attraction such as theme parks or tourist activities
+        // • medical - a hospital or other medical facility
+        // • transport - a transportation building such as a bus or train depot
+        // • commercial - a commercial/industrial building
+        // • government - a government or military facility
+        // • public - a public building such as a townhall or community centre
+        console.log('building-type:', `'${data['building-type']}'`);
         
         // The city of the location
         console.log('city:', `'${data['city']}'`);
+        
+        // ISO 2-letter continent code
+        console.log('continent-code:', `'${data['continent-code']}'`);
         
         // The country of the location
         console.log('country:', `'${data['country']}'`);
@@ -55,11 +84,19 @@ neutrinoAPIClient.geocodeReverse(params)
         // True if these coordinates map to a real location
         console.log('found:', data['found']);
         
+        // The location geohash
+        console.log('geohash:', `'${data['geohash']}'`);
+        
         // The ISO 2-letter language code for the official language spoken in the country
         console.log('language-code:', `'${data['language-code']}'`);
         
         // The location latitude
         console.log('latitude:', data['latitude']);
+        
+        // Map containing any external metadata linked to the location. Currently supports the following
+        // values which are only set if known: website-url, phone-number, org-name, wikipedia-title,
+        // wikidata-entity
+        console.log('location-profile:', data['location-profile']);
         
         // Array of strings containing any location tags associated with the address. Tags are additional
         // pieces of metadata about a specific location, there are thousands of different tags. Some

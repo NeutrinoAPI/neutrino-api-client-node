@@ -51,7 +51,7 @@ neutrinoAPIClient.urlInfo(params)
         // The HTTP status code this URL responded with. An HTTP status of 0 indicates a network level issue
         console.log('http-status:', data['http-status']);
         
-        // The HTTP status message assoicated with the status code
+        // The HTTP status message associated with the status code
         console.log('http-status-message:', `'${data['http-status-message']}'`);
         
         // True if an error occurred while loading the URL. This includes network errors, TLS errors and
@@ -69,7 +69,7 @@ neutrinoAPIClient.urlInfo(params)
         // The time taken to load the URL content in seconds
         console.log('load-time:', data['load-time']);
         
-        // A key-value map of the URL query paramaters
+        // A key-value map of the URL query parameters
         console.log('query:', data['query']);
         
         // Is this URL actually serving real content

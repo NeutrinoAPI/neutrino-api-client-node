@@ -6,7 +6,9 @@ const neutrinoAPIClient = new NeutrinoAPIClient('<your-user-id>', '<your-api-key
 
 const params = {
 
-    // A domain name, hostname, FQDN, URL, HTML link or email address to lookup
+    // A domain name, hostname, FQDN, URL, HTML link or email address to lookup. For internationalized
+    // domain names (IDNs) this field will accept either punycode or the raw unicode domain name, the
+    // API will always automatically return IDNs encoded into punycode
     'host': 'neutrinoapi.com',
 
     // For domains that we have never seen before then perform various live checks and realtime
@@ -42,9 +44,18 @@ neutrinoAPIClient.domainLookup(params)
         // The primary domain of the DNS provider for this domain
         console.log('dns-provider:', `'${data['dns-provider']}'`);
         
-        // The primary domain name excluding any subdomains. This is also referred to as the second-level
-        // domain (SLD)
+        // The primary domain name excluding any subdomains. This is also commonly referred to as the
+        // second-level domain (SLD), the registrable domain, the root domain or the eTLD+1
         console.log('domain:', `'${data['domain']}'`);
+        
+        // The effective top-level domain (eTLD). Usually the same as the TLD but will differ when a domain
+        // is on the public suffix list (PSL) and acts as a TLD for registrable domains (for example
+        // github.io is an eTLD)
+        console.log('etld:', `'${data['etld']}'`);
+        
+        // The ISO date this domain is due to expire. An empty value indicates we could not reliably
+        // determine the date
+        console.log('expiry-date:', `'${data['expiry-date']}'`);
         
         // The fully qualified domain name (FQDN)
         console.log('fqdn:', `'${data['fqdn']}'`);
@@ -73,6 +84,18 @@ neutrinoAPIClient.domainLookup(params)
         // no valid MX records
         console.log('mail-provider:', `'${data['mail-provider']}'`);
         
+        // The status of the domains mail configuration, possible values are:
+        // • ok - the domain is in working order and can receive email
+        // • invalid - the domain is not a conformant hostname. May contain invalid syntax or characters
+        // • no-service - the domain owner has indicated there is no mail service on the domain (also
+        //   known as the 'Null MX')
+        // • no-mail - the domain has no valid MX records so cannot receive email
+        // • mx-invalid - MX records contain invalid or non-conformant hostname values
+        // • mx-bogon - MX records point to bogon IP addresses
+        // • resolv-error - MX records do not resolve to any valid IP addresses
+        // • unknown - mail status is currently unknown (the domain may still be pending processing)
+        console.log('mail-status:', `'${data['mail-status']}'`);
+        
         // The domains estimated global traffic rank with the highest rank being 1. A value of 0 indicates
         // the domain is currently ranked outside of the top 1M of domains
         console.log('rank:', data['rank']);
@@ -81,11 +104,20 @@ neutrinoAPIClient.domainLookup(params)
         // we could not reliably determine the date
         console.log('registered-date:', `'${data['registered-date']}'`);
         
-        // The IANA registrar ID (0 if no registrar ID was found)
+        // True if the registrar is an officially IANA accredited registrar
+        console.log('registrar-accredited:', data['registrar-accredited']);
+        
+        // The ISO 2-letter country code where the registrar is located
+        console.log('registrar-country-code:', `'${data['registrar-country-code']}'`);
+        
+        // The IANA registrar ID (0 if no official IANA registrar ID exists)
         console.log('registrar-id:', data['registrar-id']);
         
         // The name of the domain registrar owning this domain
         console.log('registrar-name:', `'${data['registrar-name']}'`);
+        
+        // The main website URL for the registrar
+        console.log('registrar-website:', `'${data['registrar-website']}'`);
         
         // An array of objects containing details on which specific blocklist sensors have detected this
         // domain
@@ -105,12 +137,25 @@ neutrinoAPIClient.domainLookup(params)
         console.log('tld:', `'${data['tld']}'`);
         
         // For a country code top-level domain (ccTLD) this will contain the associated ISO 2-letter country
-        // code
+        // code. For non-ccTLD domains this field will always be empty
         console.log('tld-cc:', `'${data['tld-cc']}'`);
         
         // True if a valid domain was found. For a domain to be considered valid it must be registered and
         // have valid DNS NS records
         console.log('valid:', data['valid']);
+        
+        // The primary domain of the website hosting provider for this domain. An empty value indicates the
+        // domain has no active website provider
+        console.log('website-provider:', `'${data['website-provider']}'`);
+        
+        // The status of the domains website configuration, possible values are:
+        // • ok - the domain has a valid and working website
+        // • no-http - the domain has website records but the HTTP servers are unresponsive or dead
+        // • no-ip - the domain has no valid A or AAAA website records
+        // • bogon-ip - the domains website records point to bogon or invalid IP addresses
+        // • parked - the domain has a working website but indicates it is currently parked or for sale
+        // • unknown - website status is currently unknown (the domain may still be pending processing)
+        console.log('website-status:', `'${data['website-status']}'`);
     })
     .catch((apiResponse) => {
         // API request failed, you should handle this gracefully!

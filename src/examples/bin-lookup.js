@@ -76,6 +76,10 @@ neutrinoAPIClient.binLookup(params)
         // Is this a prepaid or prepaid reloadable card
         console.log('is-prepaid:', data['is-prepaid']);
         
+        // Indicates the card can be reloaded with funds. This is mostly useful to distinguish between
+        // non-reloadable and reloadable prepaid card types
+        console.log('is-reloadable:', data['is-reloadable']);
+        
         // The card issuer
         console.log('issuer:', `'${data['issuer']}'`);
         

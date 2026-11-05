@@ -36,12 +36,19 @@ neutrinoAPIClient.ipBlocklist(params)
         //   organization
         // • malware - IP is currently involved in distributing or is running malware
         // • spyware - IP is currently involved in distributing or is running spyware
-        // • spider - IP is running a hostile web spider / web crawler
+        // • spider - IP is running a hostile web spider (deprecated but kept for backwards compatibility
+        //   instead use UA/IP lookups for spider detection)
         // • dshield - IP has been flagged as a significant attack source by DShield (dshield.org)
         console.log('blocklists:', data['blocklists']);
         
         // The CIDR address for this listing (only set if the IP is listed)
         console.log('cidr:', `'${data['cidr']}'`);
+        
+        // The unix time when this IP was first seen on any blocklist
+        console.log('first-seen:', data['first-seen']);
+        
+        // The ISO date when this IP was first seen on any blocklist
+        console.log('first-seen-date:', `'${data['first-seen-date']}'`);
         
         // The IP address
         console.log('ip:', `'${data['ip']}'`);
@@ -71,7 +78,8 @@ neutrinoAPIClient.ipBlocklist(params)
         // IP address is hosting a spam bot, comment spamming or any other spamming type software
         console.log('is-spam-bot:', data['is-spam-bot']);
         
-        // IP is running a hostile web spider / web crawler
+        // IP is running a hostile web spider (deprecated but kept for backwards compatibility instead use
+        // UA/IP lookups for spider detection)
         console.log('is-spider:', data['is-spider']);
         
         // IP is involved in distributing or is running spyware
@@ -86,6 +94,9 @@ neutrinoAPIClient.ipBlocklist(params)
         // The unix time when this IP was last seen on any blocklist. IPs are automatically removed after 7
         // days therefor this value will never be older than 7 days
         console.log('last-seen:', data['last-seen']);
+        
+        // The ISO date when this IP was last seen on any blocklist
+        console.log('last-seen-date:', `'${data['last-seen-date']}'`);
         
         // The number of blocklists the IP is listed on
         console.log('list-count:', data['list-count']);
@@ -102,6 +113,10 @@ neutrinoAPIClient.ipBlocklist(params)
             console.log('    id:', sensorsItem['id']);
             console.log()
         }
+        
+        // The total number of times this IP has been detected by any sensor, higher numbers indicate higher
+        // levels of malicious activity
+        console.log('total-hits:', data['total-hits']);
     })
     .catch((apiResponse) => {
         // API request failed, you should handle this gracefully!
